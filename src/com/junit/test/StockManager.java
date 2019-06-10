@@ -1,5 +1,7 @@
 package com.junit.test;
 
+import java.util.Objects;
+
 public class StockManager {
 
   private ExternalISBNDataService webService;
@@ -15,7 +17,7 @@ public class StockManager {
 
   public String getLocatorCode(String isbn) {
     Book book = databaseService.lookup(isbn);
-    if (book == null) {
+    if (Objects.isNull(book)) {
       book = webService.lookup(isbn);
     }
     StringBuilder locator = new StringBuilder();
